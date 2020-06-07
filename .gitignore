@@ -1,0 +1,14 @@
+# frontend stuff
+node_modules
+*.log*
+
+# backend stuff
+__pycache__/
+*.sql
+*.sqlite
+
+# misc
+.#*
+GPATH
+GRTAGS
+GTAGS
