@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 from .default_settings import *
 
 # Quick-start development settings - unsuitable for production
@@ -15,11 +16,4 @@ ALLOWED_HOSTS = [os.environ['DJANGO_PROD_HOST']]
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# TODO: change to postgres
-DATABASES = {
-}
-
-# static files
-# TODO are these settings actually necessary for my app? (I suspect not.)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+DATABASES['default'] = dj_database_url.config()

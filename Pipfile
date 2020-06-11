@@ -9,6 +9,8 @@ verify_ssl = true
 django = "*"
 gunicorn = "*"
 djangorestframework = "*"
+psycopg2 = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.8"
