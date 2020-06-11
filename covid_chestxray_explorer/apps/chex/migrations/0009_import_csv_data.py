@@ -3,6 +3,7 @@
 import os
 import csv
 from django.db import migrations
+from django.conf import settings
 
 # since this is a one-time import:
 #   - it is assumed that csv cols correspond 1-to-1 with db cols (because
@@ -196,7 +197,7 @@ TRANSFORM_FUNCTIONS = [
     lambda s: string_validator(s, 'other_notes'),
 ]
 
-CSV_DATA_FILE = os.path.expanduser('~/covid-chestxray-dataset/metadata.csv')
+CSV_DATA_FILE = os.path.join(settings.BASE_DIR, 'static/metadata.csv')
 
 def import_csv_data(apps, schema_editor):
     ChestXrayImage = apps.get_model('chex', 'ChestXrayImage')
