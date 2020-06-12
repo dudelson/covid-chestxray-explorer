@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <h2>This is the landing page</h2>
+    <p>
+      <router-link to="/index">View all xrays</router-link>
+    </p>
+
     <router-view/>
   </div>
 </template>

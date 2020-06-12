@@ -7,16 +7,12 @@ export default new Router({
   routes: [
     {
       path: "/",
-      redirect: "/index",
+      name: "landing-page",
+      component: () => import("./App.vue")
     },
     {
       path: "/index",
       name: "index",
-      component: () => import("./components/Index.vue")
-    },
-    {
-      path: "/gallery",
-      name: "gallery",
       component: () => import("./components/XrayThumbnailList.vue")
     },
     {
