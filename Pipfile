@@ -11,6 +11,7 @@ gunicorn = "*"
 djangorestframework = "*"
 psycopg2 = "*"
 dj-database-url = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.8"
