@@ -1,33 +1,29 @@
 <template>
-  <div id="app">
-    <h2>This is the landing page</h2>
-    <p>
-      <router-link to="/index">View all xrays</router-link>
-    </p>
+    <div id="app">
+        <div id="header" class="container-fluid">
+            <div class="row border-bottom border-dark py-3 mb-5">
+                <div class="col">
+                    <h1>COVID-19 Chest X-Ray Image Open Dataset Explorer</h1>
+                </div>
+            </div>
+        </div>
 
-    <router-view/>
-  </div>
+        <div id="content" class="container">
+            <router-view />
+        </div>
+    </div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+ #app {
+     font-family: Avenir, Helvetica, Arial, sans-serif;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     text-align: center;
+     color: #2c3e50;
+ }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+ #header {
+     background-color: #dfdfdf;
+ }
 </style>
