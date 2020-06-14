@@ -34,36 +34,36 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data: function () {
         return {
-            xrays: [
-                {
-                    id: 1,
-                    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lung_X-ray.jpg/330px-Lung_X-ray.jpg'
-                },
-                {
-                    id: 2,
-                    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lung_X-ray.jpg/330px-Lung_X-ray.jpg'
-                },
-                {
-                    id: 3,
-                    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lung_X-ray.jpg/330px-Lung_X-ray.jpg'
-                },
-                {
-                    id: 4,
-                    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lung_X-ray.jpg/330px-Lung_X-ray.jpg'
-                },
-                {
-                    id: 5,
-                    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lung_X-ray.jpg/330px-Lung_X-ray.jpg'
-                },
-                {
-                    id: 6,
-                    image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lung_X-ray.jpg/330px-Lung_X-ray.jpg'
-                },
-            ]
+            xrays: []
         }
+    },
+    created: function () { this.fetchData(); },
+    // computed: {
+    //     xray_cloudinary_urls = function () {
+    //         const CLOUDINARY_URL_PREFIX = ''
+    //         var ret = {};
+    //         for xray in this.xrays {
+    //             ret[xray.id] =
+    //         }
+    //     };
+    // },
+    methods: {
+        fetchData() {
+            const SERVER_ENDPOINT = (process.env.NODE_ENV == 'production'
+                                   ? 'https://powerful-waters-58735.herokuapp.com'
+                                   : 'http://localhost:8000');
+            axios.get(SERVER_ENDPOINT + '/xrays/')
+                 .then(response => {
+                     this.xrays = response.data;
+                     const urls = this.xrays.map(xray => xray.image_url);
+                     console.log(urls);
+                 });
+        },
     }
 }
 </script>

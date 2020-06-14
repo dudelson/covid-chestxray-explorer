@@ -40,40 +40,25 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data: function () {
         return {
-            item: {
-                "age": 45,
-                "clinical_notes": "clear regression of the areas of hypodiaphania previously appreciable bilaterally, in particular in both the upper lung fields and the right lung base.",
-                "extubated": null,
-                "finding": "COVID-19",
-                "id": 234,
-                "image_date": null,
-                "image_license": "",
-                "image_url": "covid-19-caso-70-2-APS.jpg",
-                "in_icu": null,
-                "intubated": null,
-                "intubation_present": null,
-                "location": "Italy",
-                "lymphocyte_count": null,
-                "modality": "X-ray",
-                "needed_supplemental_o2": null,
-                "neutrophil_count": null,
-                "offset": 4,
-                "other_notes": "Credit to Sergio MargariASST Fatebenefratelli Sacco � Milan",
-                "patient_id": "139",
-                "percent_o2_saturation": null,
-                "sex": "M",
-                "study_doi": "",
-                "study_url": "https://www.sirm.org/2020/03/30/covid-19-caso-70/",
-                "survival": null,
-                "temperature": null,
-                "wbc_count": null,
-                "went_icu": null,
-                "xray_view": "AP Supine"
-            }
+            item: {}
         }
-    }
+    },
+    created: function () { this.fetchData(); },
+    methods: {
+        fetchData() {
+            const SERVER_ENDPOINT = (process.env.NODE_ENV == 'production'
+                                   ? 'https://powerful-waters-58735.herokuapp.com'
+                                   : 'http://localhost:8000');
+            axios.get(SERVER_ENDPOINT + '/xrays/' + this.$route.params.id + '/')
+                 .then(response => {
+                     this.item = response.data;
+                 });
+        },
+    },
 }
 </script>
