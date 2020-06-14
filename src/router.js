@@ -3,6 +3,9 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
+import XrayThumbnailList from './components/XrayThumbnailList.vue';
+import XrayDetail from './components/XrayDetail.vue';
+
 export default new Router({
   routes: [
     {
@@ -12,12 +15,12 @@ export default new Router({
     {
       path: "/gallery/:pagenum",
       name: "gallery",
-      component: () => import("./components/XrayThumbnailList.vue")
+      component: XrayThumbnailList,
     },
     {
       path: "/view/:id",
       name: "view-detail",
-      component: () => import("./components/XrayDetail.vue")
+      component: XrayDetail,
     },
   ]
 });

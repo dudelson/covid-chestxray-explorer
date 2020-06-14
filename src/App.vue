@@ -9,7 +9,9 @@
         </div>
 
         <div id="content" class="container">
-            <router-view />
+            <keep-alive>
+                <router-view />
+            </keep-alive>
         </div>
     </div>
 </template>
