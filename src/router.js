@@ -7,7 +7,11 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "index",
+      redirect: "/gallery/1",
+    },
+    {
+      path: "/gallery/:pagenum",
+      name: "gallery",
       component: () => import("./components/XrayThumbnailList.vue")
     },
     {

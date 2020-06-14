@@ -1,7 +1,10 @@
 <template>
     <div class="row row-cols-2 text-left">
         <div class="col">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lung_X-ray.jpg/330px-Lung_X-ray.jpg" alt="">
+            <cld-image
+                class="card-img-top"
+                :publicId="'covid-chestxray-dataset/' + item.image_url"
+                size="500" />
             <p><strong>Item ID:</strong> {{ this.$route.params.id }} </p>
             <br/>
             <h3>Patient Facts</h3>
