@@ -16,17 +16,13 @@
         <div class="row row-cols-4">
             <div class="col mb-3" v-for="xray in xrays" :key="xray.id">
                 <div class="card">
-                    <img class="card-img-top" :src="xray.image_url" alt="Patient: Seymour Bones">
-                    <div class="card-body">
-                        <h5 class="card-title">My Cool Xray Image</h5>
-                        <p class="card-text">My Cool Xray Image Description</p>
-                        <router-link
-                            class="btn btn-primary"
-                            :to="{name: 'view-detail', params: {id: xray.id}}"
-                        >
-                            View
-                        </router-link>
-                    </div>
+                    <router-link
+                        :to="{name: 'view-detail', params: {id: xray.id}}"
+                    >
+                        <cld-image
+                            class="card-img-top"
+                            :publicId="'covid-chestxray-dataset/' + xray.image_url" />
+                    </router-link>
                 </div>
             </div>
         </div>
