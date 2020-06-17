@@ -12,16 +12,18 @@
             </div>
         </div>
 
-        <div class="row row-cols-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
             <div class="col mb-3" v-for="xray in paginatedXrays" :key="xray.id">
                 <div class="card">
                     <router-link
                         :to="{name: 'view-detail', params: {id: xray.id}}"
                     >
-                        <cld-image
-                            class="card-img-top"
-                            :publicId="'covid-chestxray-dataset/' + xray.image_url"
-                            size="200" />
+                        <img
+                            class="card-img-top cld-responsive"
+                            :src="cloudinarySrc(xray)"
+                            width="auto"
+                            crop="scale"
+                        >
                     </router-link>
                 </div>
             </div>
@@ -42,6 +44,9 @@
 
 <script>
 import axios from 'axios';
+import cloudinary from 'cloudinary-core';
+
+const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'dmcs4ohin' });
 
 export default {
     data: function () {
@@ -71,6 +76,10 @@ export default {
                  .then(response => {
                      this.xrays = response.data;
                  });
+        },
+        cloudinarySrc(xray) {
+            const prefix = 'covid-chestxray-dataset/';
+            return cloudinaryCore.url(prefix + xray.image_url);
         },
     }
 }

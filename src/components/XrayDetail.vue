@@ -1,12 +1,12 @@
 <template>
     <div class="row row-cols-2 text-left">
         <div class="col">
-            <cld-image
-                class="card-img-top"
-                :publicId="'covid-chestxray-dataset/' + item.image_url"
-                size="500" />
-            <p><strong>Item ID:</strong> {{ this.$route.params.id }} </p>
-            <br/>
+            <img
+                class="img-fluid cld-responsive"
+                :src="cloudinarySrc"
+                width="auto"
+                crop="scale"
+            >
             <h3>Patient Facts</h3>
             <p><strong>Patient ID:</strong> {{ item.patient_id }}</p>
             <p><strong>Age:</strong> {{ item.age }}</p>
@@ -44,6 +44,9 @@
 
 <script>
 import axios from 'axios';
+import cloudinary from 'cloudinary-core';
+
+const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'dmcs4ohin' });
 
 export default {
     data: function () {
@@ -52,6 +55,12 @@ export default {
         }
     },
     created: function () { this.fetchData(); },
+    computed: {
+        cloudinarySrc() {
+            const prefix = 'covid-chestxray-dataset/';
+            return cloudinaryCore.url(prefix + this.item.image_url);
+        },
+    },
     methods: {
         fetchData() {
             const SERVER_ENDPOINT = (process.env.NODE_ENV == 'production'

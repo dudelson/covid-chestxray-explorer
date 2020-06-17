@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div id="header" class="container-fluid">
+        <div id="header" class="container-fluid d-none d-md-block">
             <div class="row border-bottom border-dark py-3 mb-5">
                 <div class="col">
                     <h1>COVID-19 Chest X-Ray Image Open Dataset Explorer</h1>

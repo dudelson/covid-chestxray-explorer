@@ -22,3 +22,8 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app');
+
+// set cloudinary images to be responsive
+import cloudinary from 'cloudinary-core';
+const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name:  'dmcs4ohin' });
+cloudinaryCore.responsive();
